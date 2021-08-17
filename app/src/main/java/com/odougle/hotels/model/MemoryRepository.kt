@@ -42,7 +42,7 @@ object MemoryRepository : HotelRepository {
         })
     }
 
-    override fun search(term: String, callback: (List<Hotel?>) -> Unit) {
+    override fun search(term: String, callback: (List<Hotel>) -> Unit) {
         callback(
             if (term.isEmpty()) hotelList
             else hotelList.filter { hotel ->
