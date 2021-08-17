@@ -1,0 +1,10 @@
+package com.odougle.hotels.presenter
+
+import com.odougle.hotels.model.HotelRepository
+import com.odougle.hotels.view.HotelListView
+
+class HotelListPresenter(
+    private val view: HotelListView,
+    private val repository: HotelRepository
+) {
+}
