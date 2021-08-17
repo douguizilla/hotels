@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.odougle.hotels.R
 import com.odougle.hotels.databinding.FragmentHotelDetailsBinding
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.model.MemoryRepository
@@ -41,9 +42,10 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
     }
 
     override fun errorHotelNotFound() {
-        TODO("Not yet implemented")
+        binding.txtName.text = getString(R.string.error_hotel_not_found)
+        binding.txtAddress.visibility = View.GONE
+        binding.rtbRating.visibility = View.GONE
     }
-
 
     companion object {
         const val TAG_DETAILS = "tagDetalhe"
