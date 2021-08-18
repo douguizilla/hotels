@@ -1,4 +1,4 @@
-package com.odougle.hotels
+package com.odougle.hotels.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
