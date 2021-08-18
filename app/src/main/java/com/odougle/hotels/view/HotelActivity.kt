@@ -2,7 +2,6 @@ package com.odougle.hotels.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelBinding
 import com.odougle.hotels.model.Hotel
@@ -30,7 +29,8 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         HotelDetailsActivity.open(this,hotelId)
     }
 
-    private fun isTablet() = findViewById<View>(R.id.details) != null
+    private fun isTablet() = resources.getBoolean(R.bool.tablet)
+    private fun isSmartphone() = resources.getBoolean(R.bool.smartphone)
 
     private fun showDetailsFragment(hotelId: Long){
         val fragment = HotelDetailsFragment.newInstance(hotelId)
