@@ -16,7 +16,8 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
 
     //carregar as ações do meu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.hotel, menu)
+        return true
     }
 
     //tratar as açoes do menu
