@@ -56,7 +56,7 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         return true
     }
 
-    //tratar as açoes do menu
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return super.onOptionsItemSelected(item)
     }
@@ -82,6 +82,22 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
             .beginTransaction()
             .replace(R.id.details, fragment, HotelDetailsFragment.TAG_DETAILS)
             .commit()
+    }
+
+    override fun onQueryTextSubmit(query: String?) = true
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        lastSearchTerm = newText ?: ""
+        listFragment.search(lastSearchTerm)
+        return true
+    }
+
+    override fun onMenuItemActionExpand(item: MenuItem?) = true
+
+    override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+        lastSearchTerm = ""
+        listFragment.clearSearch()
+        return true
     }
 
     companion object{
