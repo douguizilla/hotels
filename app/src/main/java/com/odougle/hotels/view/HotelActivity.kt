@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelBinding
 import com.odougle.hotels.model.Hotel
 
-class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener {
+class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener,
+    SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener {
 
     private val binding: ActivityHotelBinding by lazy {
         ActivityHotelBinding.inflate(layoutInflater)
     }
+
+    private var lastSearchTerm: String = ""
+    private var searchView: SearchView? = null
 
     //carregar as ações do meu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -31,21 +36,21 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     }
 
     override fun onHotelClick(hotel: Hotel) {
-        if(isTablet()){
+        if (isTablet()) {
             showDetailsFragment(hotel.id)
-        }else{
+        } else {
             showDetailsActivity(hotel.id)
         }
     }
 
     private fun showDetailsActivity(hotelId: Long) {
-        HotelDetailsActivity.open(this,hotelId)
+        HotelDetailsActivity.open(this, hotelId)
     }
 
     private fun isTablet() = resources.getBoolean(R.bool.tablet)
     private fun isSmartphone() = resources.getBoolean(R.bool.smartphone)
 
-    private fun showDetailsFragment(hotelId: Long){
+    private fun showDetailsFragment(hotelId: Long) {
         val fragment = HotelDetailsFragment.newInstance(hotelId)
         supportFragmentManager
             .beginTransaction()
