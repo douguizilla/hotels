@@ -2,6 +2,7 @@ package com.odougle.hotels.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
@@ -37,6 +38,21 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     //carregar as ações do meu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.hotel, menu)
+        val searchItem = menu?.findItem(R.id.action_search )
+        searchItem?.setOnActionExpandListener(this)
+
+        searchView = searchItem?.actionView as SearchView
+        searchView?.queryHint = getString(R.string.hint_search)
+        searchView?.setOnQueryTextListener(this)
+
+        if(lastSearchTerm.isNotEmpty()){
+            Handler().post{
+                val query = lastSearchTerm
+                searchItem.expandActionView()
+                searchView?.setQuery(query, true)
+                searchView?.clearFocus()
+            }
+        }
         return true
     }
 
