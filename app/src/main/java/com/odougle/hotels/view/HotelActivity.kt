@@ -16,8 +16,14 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         ActivityHotelBinding.inflate(layoutInflater)
     }
 
+    private val listFragment: HotelListFragment by lazy {
+        supportFragmentManager.findFragmentById(R.id.fragmentList) as HotelListFragment
+    }
+
     private var lastSearchTerm: String = ""
     private var searchView: SearchView? = null
+
+
 
     //carregar as ações do meu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
