@@ -23,6 +23,15 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     private var lastSearchTerm: String = ""
     private var searchView: SearchView? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        lastSearchTerm = savedInstanceState?.getString(EXTRA_SEARCH_TERM) ?: ""
+    }
 
 
     //carregar as ações do meu
@@ -34,11 +43,6 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     //tratar as açoes do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
     }
 
     override fun onHotelClick(hotel: Hotel) {
@@ -62,6 +66,10 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
             .beginTransaction()
             .replace(R.id.details, fragment, HotelDetailsFragment.TAG_DETAILS)
             .commit()
+    }
+
+    companion object{
+        const val EXTRA_SEARCH_TERM = "lastSearch"
     }
 
 }
