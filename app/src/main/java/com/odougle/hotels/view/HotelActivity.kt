@@ -2,6 +2,8 @@ package com.odougle.hotels.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelBinding
 import com.odougle.hotels.model.Hotel
@@ -10,6 +12,16 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
 
     private val binding: ActivityHotelBinding by lazy {
         ActivityHotelBinding.inflate(layoutInflater)
+    }
+
+    //carregar as ações do meu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    //tratar as açoes do menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
