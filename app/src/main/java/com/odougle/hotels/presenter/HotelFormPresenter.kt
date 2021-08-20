@@ -4,7 +4,6 @@ import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.model.HotelRepository
 import com.odougle.hotels.model.HotelValidator
 import com.odougle.hotels.view.HotelFormView
-import java.lang.Exception
 import kotlin.Exception
 
 class HotelFormPresenter(
