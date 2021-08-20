@@ -29,6 +29,11 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         setContentView(binding.root)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState?.putString(EXTRA_SEARCH_TERM,lastSearchTerm)
+    }
+
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         lastSearchTerm = savedInstanceState?.getString(EXTRA_SEARCH_TERM) ?: ""
