@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.ListFragment
+import com.odougle.hotels.R
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.model.MemoryRepository
 import com.odougle.hotels.presenter.HotelListPresenter
