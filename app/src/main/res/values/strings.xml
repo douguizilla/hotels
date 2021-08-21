@@ -9,6 +9,9 @@
     <string name="about_title">Hotels</string>
     <string name="about_message">Desenvolvido pelo Douglas</string>
     <string name="about_button_site">Site</string>
+    <string name="form_label_name">Nome</string>
+    <string name="form_label_address">Address</string>
+    <string name="form_label_rating">Classificação</string>
 
 
 </resources>
