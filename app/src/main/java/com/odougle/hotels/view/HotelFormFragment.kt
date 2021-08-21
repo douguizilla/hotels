@@ -17,9 +17,10 @@ import com.odougle.hotels.presenter.HotelFormPresenter
 
 class HotelFormFragment : DialogFragment(), HotelFormView {
 
-    private val binding: FragmentHotelFormBinding by lazy {
-        FragmentHotelFormBinding.inflate(layoutInflater)
-    }
+
+    private var _binding: FragmentHotelFormBinding? = null
+    private val binding get() = _binding!!
+
     private val presenter = HotelFormPresenter(this, MemoryRepository)
 
     override fun onCreateView(
@@ -27,7 +28,8 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_hotel_form, container, false)
+        _binding = FragmentHotelFormBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
