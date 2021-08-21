@@ -12,7 +12,7 @@
     <string name="form_label_name">Nome</string>
     <string name="form_label_address">Address</string>
     <string name="form_label_rating">Classificação</string>
-    <string name="error_invalid_hotel">Hotel Inválido</string>
+    <string name="error_invalid_hotel">Hotel não preenchido corretamente</string>
 
 
 </resources>
