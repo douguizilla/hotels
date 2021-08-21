@@ -11,7 +11,7 @@ import com.odougle.hotels.databinding.ActivityHotelBinding
 import com.odougle.hotels.model.Hotel
 
 class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener,
-    SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener {
+    SearchView.OnQueryTextListener, MenuItem.OnActionExpandListener, HotelFormFragment.OnHotelSavedListener {
 
     private val binding: ActivityHotelBinding by lazy {
         ActivityHotelBinding.inflate(layoutInflater)
@@ -65,6 +65,7 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         when(item?.itemId){
             R.id.action_info ->
                 AboutDialogFragment().show(supportFragmentManager, "sobre")
+            R.id.action_new -> HotelFormFragment.newInstance().open(supportFragmentManager)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -110,6 +111,10 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
 
     companion object{
         const val EXTRA_SEARCH_TERM = "lastSearch"
+    }
+
+    override fun onHotelSaved(hotel: Hotel) {
+        listFragment.search(lastSearchTerm)
     }
 
 }
