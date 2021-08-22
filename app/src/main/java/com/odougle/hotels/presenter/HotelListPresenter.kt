@@ -42,4 +42,16 @@ class HotelListPresenter(
             selectedItems.removeAll { it.id == hotel.id }
         }
     }
+
+    fun showDeleteMode(){
+        inDeleteMode = true
+        view.showDeleteMode()
+    }
+
+    fun hideDeleteMode(){
+        inDeleteMode = false
+        selectedItems.clear()
+        view.hideDeleteMode()
+    }
+
 }
