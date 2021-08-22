@@ -54,4 +54,8 @@ class HotelListPresenter(
         view.hideDeleteMode()
     }
 
+    fun refresh(){
+        searchHotels(lastTerm)
+    }
+
 }
