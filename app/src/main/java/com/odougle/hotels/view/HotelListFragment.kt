@@ -41,7 +41,22 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     override fun onListItemClick(l: ListView, v: View, position: Int, id: Long) {
         super.onListItemClick(l, v, position, id)
         val hotel = l?.getItemAtPosition(position) as Hotel
-        presenter.showHotelDetails(hotel)
+        presenter.selectHotel(hotel)
+    }
+
+    override fun onItemLongClick(
+        parent: AdapterView<*>?,
+        view: View?,
+        position: Int,
+        id: Long
+    ): Boolean {
+        val consumed = (actionMode == null)
+        if(consumed){
+            val hotel = parent?.getItemAtPosition(position) as Hotel
+            presenter.showDeleteMode()
+            presenter.selectHotel(hotel)
+        }
+        return consumed
     }
 
     interface OnHotelClickListener{
@@ -88,12 +103,5 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         TODO("Not yet implemented")
     }
 
-    override fun onItemLongClick(
-        parent: AdapterView<*>?,
-        view: View?,
-        position: Int,
-        id: Long
-    ): Boolean {
-        TODO("Not yet implemented")
-    }
+
 }
