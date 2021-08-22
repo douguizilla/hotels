@@ -107,6 +107,11 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         return false
     }
 
+    override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+        activity?.menuInflater?.inflate(R.menu.hotel_delete_list, menu)
+        return true
+    }
+
     interface OnHotelClickListener{
         fun onHotelClick(hotel: Hotel)
     }
@@ -123,9 +128,7 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         presenter.searchHotels("")
     }
 
-    override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-        TODO("Not yet implemented")
-    }
+
 
     override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
         TODO("Not yet implemented")
