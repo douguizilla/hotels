@@ -112,6 +112,13 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         return true
     }
 
+    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?) = false
+
+    override fun onDestroyActionMode(mode: ActionMode?) {
+        actionMode = null
+        presenter.hideDeleteMode()
+    }
+
     interface OnHotelClickListener{
         fun onHotelClick(hotel: Hotel)
     }
@@ -127,22 +134,4 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     fun clearSearch(){
         presenter.searchHotels("")
     }
-
-
-
-    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-        TODO("Not yet implemented")
-    }
-
-
-
-    override fun onDestroyActionMode(mode: ActionMode?) {
-        TODO("Not yet implemented")
-    }
-
-
-
-
-
-
 }
