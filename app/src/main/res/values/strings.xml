@@ -22,7 +22,7 @@
 
     <string name="undo">Desfazer</string>
     <string name="message_hotels_deleted">%d excluídos</string>
-
+    <string name="action_share">Compartilhar</string>
 
 
 </resources>
