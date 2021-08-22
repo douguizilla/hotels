@@ -69,4 +69,14 @@ class HotelListPresenter(
         hideDeleteMode()
     }
 
+    fun init() {
+        if(inDeleteMode){
+            showDeleteMode()
+            view.updateSelectionCountText(selectedItems.size)
+            view.showSelectedHotels(selectedItems)
+        }else{
+            refresh()
+        }
+    }
+
 }
