@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Hotels">
         <activity android:name=".view.HotelDetailsActivity"
             android:parentActivityName=".view.HotelActivity"/>
-        <activity android:name=".view.HotelActivity">
+        <activity android:name=".view.HotelActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
