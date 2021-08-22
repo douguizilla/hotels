@@ -19,7 +19,7 @@ class HotelListPresenter(
         }
     }
 
-    fun showHotelDetails(hotel: Hotel) {
+    fun selectHotel(hotel: Hotel){
         if (inDeleteMode) {
             toogleHotelSelected(hotel)
             if (selectedItems.size == 0) {
@@ -32,6 +32,10 @@ class HotelListPresenter(
         } else {
             view.showHotelDetails(hotel)
         }
+    }
+
+    fun showHotelDetails(hotel: Hotel) {
+        view.showHotelDetails(hotel)
     }
 
     private fun toogleHotelSelected(hotel: Hotel) {
