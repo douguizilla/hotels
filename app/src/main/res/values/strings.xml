@@ -20,5 +20,7 @@
         <item quantity="other">%d selecionados</item>
     </plurals>
 
+    <string name="undo">Desfazer</string>
+
 
 </resources>
