@@ -58,4 +58,11 @@ class HotelListPresenter(
         searchHotels(lastTerm)
     }
 
+    fun deleteSelected(callback: (List<Hotel>)->Unit){
+        repository.remove(*selectedItems.toTypedArray())
+        refresh()
+        callback(selectedItems)
+        hideDeleteMode()
+    }
+
 }
