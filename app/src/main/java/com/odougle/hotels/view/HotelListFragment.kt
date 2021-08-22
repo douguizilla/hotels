@@ -84,8 +84,35 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         }
     }
 
+    override fun showSelectedHotels(hotels: List<Hotel>) {
+        listView.post {
+            for(i in 0 until listView.count){
+                val hotel = listView.getItemAtPosition(i) as Hotel
+                if(hotels.find{it.id == hotel.id} != null){
+                    listView.setItemChecked(i, true)
+                }
+            }
+        }
+    }
+
+    override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+        if(item?.itemId == R.id.action_delete){
+            presenter.deleteSelected { hotels ->
+                if(activity is OnHotelDeletedListener){
+                    (activity as OnHotelDeletedListener).onHotelsDeleted(hotels)
+                }
+            }
+            return true
+        }
+        return false
+    }
+
     interface OnHotelClickListener{
         fun onHotelClick(hotel: Hotel)
+    }
+
+    interface OnHotelDeletedListener{
+        fun onHotelsDeleted(hotels: List<Hotel>)
     }
 
     fun search(text: String){
@@ -104,17 +131,13 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         TODO("Not yet implemented")
     }
 
-    override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
-        TODO("Not yet implemented")
-    }
+
 
     override fun onDestroyActionMode(mode: ActionMode?) {
         TODO("Not yet implemented")
     }
 
-    override fun showSelectedHotels(hotels: List<Hotel>) {
-        TODO("Not yet implemented")
-    }
+
 
 
 
