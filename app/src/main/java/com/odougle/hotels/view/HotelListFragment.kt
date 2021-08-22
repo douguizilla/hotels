@@ -67,6 +67,17 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
     }
 
+    override fun hideDeleteMode() {
+        listView.onItemLongClickListener = this
+        for(i in 0 until listView.count){
+            listView.setItemChecked(i,false)
+        }
+        listView.post {
+            actionMode?.finish()
+            listView.choiceMode = ListView.CHOICE_MODE_NONE
+        }
+    }
+
     interface OnHotelClickListener{
         fun onHotelClick(hotel: Hotel)
     }
@@ -92,10 +103,6 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     }
 
     override fun onDestroyActionMode(mode: ActionMode?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun hideDeleteMode() {
         TODO("Not yet implemented")
     }
 
