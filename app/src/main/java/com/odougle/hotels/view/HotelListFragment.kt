@@ -28,7 +28,7 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     }
 
     override fun showHotels(hotels: List<Hotel>) {
-        val adapter = ArrayAdapter<Hotel>(requireContext(), android.R.layout.simple_list_item_1, hotels)
+        val adapter = ArrayAdapter<Hotel>(requireContext(), android.R.layout.simple_list_item_activated_1, hotels)
         listAdapter = adapter
     }
 
