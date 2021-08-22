@@ -31,6 +31,11 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.fabAdd.setOnClickListener{
+            listFragment.hideDeleteMode()
+            HotelFormFragment.newInstance().open(supportFragmentManager)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -71,7 +76,6 @@ class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListene
         when (item?.itemId) {
             R.id.action_info ->
                 AboutDialogFragment().show(supportFragmentManager, "sobre")
-            R.id.action_new -> HotelFormFragment.newInstance().open(supportFragmentManager)
         }
         return super.onOptionsItemSelected(item)
     }
