@@ -100,7 +100,7 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     override fun showMessageHotelsDeleted(count: Int) {
         Snackbar.make(
             listView,
-            getString(R.string.message_hotels_deleted),
+            getString(R.string.message_hotels_deleted, count),
             Snackbar.LENGTH_LONG)
             .setAction(R.string.undo){
                 presenter.undoDelete()
