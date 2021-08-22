@@ -8,13 +8,38 @@ class HotelListPresenter(
     private val view: HotelListView,
     private val repository: HotelRepository
 ) {
-    fun searchHotels(term: String){
-        repository.search(term){ hotels ->
+    private var lastTerm = ""
+    private var inDeleteMode = false
+    private val selectedItems = mutableListOf<Hotel>()
+
+    fun searchHotels(term: String) {
+        lastTerm = term
+        repository.search(term) { hotels ->
             view.showHotels(hotels)
         }
     }
 
-    fun showHotelDetails(hotel: Hotel){
-        view.showHotelDetails(hotel)
+    fun showHotelDetails(hotel: Hotel) {
+        if (inDeleteMode) {
+            toogleHotelSelected(hotel)
+            if (selectedItems.size == 0) {
+                view.hideDeleteMode()
+            } else {
+                view.updateSelectionCountText(selectedItems.size)
+                view.showSelectedHotels(selectedItems)
+            }
+
+        } else {
+            view.showHotelDetails(hotel)
+        }
+    }
+
+    private fun toogleHotelSelected(hotel: Hotel) {
+        val existing = selectedItems.find { it.id == hotel.id }
+        if(existing == null){
+            selectedItems.add(hotel)
+        }else{
+            selectedItems.removeAll { it.id == hotel.id }
+        }
     }
 }
