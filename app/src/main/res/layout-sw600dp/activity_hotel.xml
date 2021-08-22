@@ -14,23 +14,22 @@
         android:layout_height="match_parent"
         android:name="com.odougle.hotels.view.HotelListFragment"/>
 
-    <FrameLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/details"
         android:layout_width="0dp"
         android:layout_weight="2"
         android:layout_height="match_parent"
-        />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:tint="@android:color/white"
-        app:srcCompat="@drawable/ic_add"
-        app:fabSize="normal"
-        app:borderWidth="0dp"
-        android:layout_gravity="bottom|end"/>
-
+        >
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/ic_add"
+            app:fabSize="normal"
+            app:borderWidth="0dp"
+            android:layout_gravity="bottom|end"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
