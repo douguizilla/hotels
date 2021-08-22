@@ -21,6 +21,8 @@
     </plurals>
 
     <string name="undo">Desfazer</string>
+    <string name="message_hotels_deleted">%d excluídos</string>
+
 
 
 </resources>

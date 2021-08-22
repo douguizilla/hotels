@@ -10,6 +10,7 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.ListFragment
+import com.google.android.material.snackbar.Snackbar
 import com.odougle.hotels.R
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.model.MemoryRepository
@@ -94,6 +95,16 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
                 }
             }
         }
+    }
+
+    override fun showMessageHotelsDeleted(count: Int) {
+        Snackbar.make(
+            listView,
+            getString(R.string.message_hotels_deleted),
+            Snackbar.LENGTH_LONG)
+            .setAction(R.string.undo){
+                presenter.undoDelete()
+            }.show()
     }
 
     override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
