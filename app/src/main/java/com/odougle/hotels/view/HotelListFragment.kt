@@ -78,6 +78,12 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         }
     }
 
+    override fun updateSelectionCountText(count: Int) {
+        view?.post {
+            actionMode?.title = resources.getQuantityString(R.plurals.list_hotel_selected, count, count)
+        }
+    }
+
     interface OnHotelClickListener{
         fun onHotelClick(hotel: Hotel)
     }
@@ -110,9 +116,7 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         TODO("Not yet implemented")
     }
 
-    override fun updateSelectionCountText(count: Int) {
-        TODO("Not yet implemented")
-    }
+
 
 
 }
