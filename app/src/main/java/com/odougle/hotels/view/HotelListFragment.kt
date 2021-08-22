@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.ListFragment
 import com.odougle.hotels.R
@@ -59,6 +60,13 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         return consumed
     }
 
+    override fun showDeleteMode() {
+        val appCompatActivity = (activity as AppCompatActivity)
+        actionMode = appCompatActivity.startSupportActionMode(this)
+        listView.onItemLongClickListener = null
+        listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+    }
+
     interface OnHotelClickListener{
         fun onHotelClick(hotel: Hotel)
     }
@@ -84,10 +92,6 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     }
 
     override fun onDestroyActionMode(mode: ActionMode?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun showDeleteMode() {
         TODO("Not yet implemented")
     }
 
