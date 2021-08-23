@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/fragmentList"
-        android:name="com.odougle.hotels.view.HotelListFragment"
+        android:name="com.odougle.hotels.view.fragments.HotelListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

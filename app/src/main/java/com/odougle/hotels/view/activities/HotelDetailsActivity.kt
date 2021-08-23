@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelDetailsBinding
-import com.odougle.hotels.view.HotelDetailsFragment
+import com.odougle.hotels.view.fragments.HotelDetailsFragment
 import java.util.*
 
 class HotelDetailsActivity : AppCompatActivity() {
