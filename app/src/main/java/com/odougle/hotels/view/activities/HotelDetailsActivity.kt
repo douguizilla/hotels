@@ -1,4 +1,4 @@
-package com.odougle.hotels.view
+package com.odougle.hotels.view.activities
 
 import android.content.Context
 import android.content.Intent
@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelDetailsBinding
+import com.odougle.hotels.view.HotelDetailsFragment
 import java.util.*
 
 class HotelDetailsActivity : AppCompatActivity() {
 
-    private val binding: ActivityHotelDetailsBinding by lazy{
+    private val binding: ActivityHotelDetailsBinding  by lazy{
         ActivityHotelDetailsBinding.inflate(layoutInflater)
     }
 
@@ -35,7 +36,7 @@ class HotelDetailsActivity : AppCompatActivity() {
     companion object{
         private const val EXTRA_HOTEL_ID = "hotel_id"
         fun open(context: Context, hotelId: Long){
-            context.startActivity(Intent(context,HotelDetailsActivity::class.java).apply {
+            context.startActivity(Intent(context, HotelDetailsActivity::class.java).apply {
                 putExtra(EXTRA_HOTEL_ID, hotelId)
             })
         }
