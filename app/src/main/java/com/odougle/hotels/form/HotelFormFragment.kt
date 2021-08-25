@@ -13,6 +13,8 @@ import com.odougle.hotels.R
 import com.odougle.hotels.databinding.FragmentHotelFormBinding
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.repository.memory.MemoryRepository
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelFormFragment : DialogFragment(), HotelFormView {
 
@@ -20,7 +22,7 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
     private var _binding: FragmentHotelFormBinding? = null
     private val binding get() = _binding!!
 
-    private val presenter = HotelFormPresenter(this, MemoryRepository)
+    private val presenter: HotelFormPresenter by inject { parametersOf(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -14,11 +14,15 @@ import com.google.android.material.snackbar.Snackbar
 import com.odougle.hotels.R
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.repository.memory.MemoryRepository
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
+import com.odougle.hotels.list.HotelListPresenter as HotelListPresenter
 
 class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     AdapterView.OnItemLongClickListener {
 
-    private val presenter = HotelListPresenter(this, MemoryRepository)
+    private val presenter: HotelListPresenter by inject { parametersOf(this) }
+
     private var actionMode: ActionMode? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

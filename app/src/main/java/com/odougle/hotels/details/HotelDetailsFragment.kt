@@ -10,13 +10,15 @@ import com.odougle.hotels.R
 import com.odougle.hotels.databinding.FragmentHotelDetailsBinding
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.repository.memory.MemoryRepository
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelDetailsFragment : Fragment(), HotelDetailsView {
 
     private var _binding: FragmentHotelDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val presenter = HotelDetailsPresenter(this, MemoryRepository)
+    private val presenter: HotelDetailsPresenter by inject { parametersOf(this) }
     private var hotel: Hotel? = null
 
     private var shareActionProvider : ShareActionProvider? = null
