@@ -7,8 +7,13 @@ import android.database.sqlite.SQLiteOpenHelper
 class HotelSqlHelper(context: Context)
     : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION){
 
-    override fun onCreate(db: SQLiteDatabase?) {
-
+    override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL(
+            "CREATE TABLE_$TABLE_HOTEL(" +
+                    "$COLUMN_ID INTERGER PRIMARY KEY AUTOINCREMENT, " +
+                    "$COLUMN_NAME TEXT NOT NULL, " +
+                    "$COLUMN_ADDRESS TEXT, " +
+                    "$COLUMN_RATING REAL)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
