@@ -30,7 +30,6 @@ val androidModule = module {
         )
     }
 
-
     factory { (view: HotelFormView) ->
         HotelFormPresenter(
             view,
