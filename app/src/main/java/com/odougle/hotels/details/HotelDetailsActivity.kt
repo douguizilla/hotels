@@ -1,5 +1,6 @@
 package com.odougle.hotels.details
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -35,10 +36,12 @@ class HotelDetailsActivity : AppCompatActivity(), HotelFormFragment.OnHotelSaved
 
     companion object{
         private const val EXTRA_HOTEL_ID = "hotel_id"
-        fun open(context: Context, hotelId: Long){
-            context.startActivity(Intent(context, HotelDetailsActivity::class.java).apply {
-                putExtra(EXTRA_HOTEL_ID, hotelId)
-            })
+        fun open(activity: Activity, hotelId: Long){
+            activity.startActivity(
+                Intent(activity, HotelDetailsActivity::class.java).apply {
+                    putExtra(EXTRA_HOTEL_ID, hotelId)
+                }
+            )
         }
     }
 
