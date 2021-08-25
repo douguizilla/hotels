@@ -1,10 +1,9 @@
 package com.odougle.hotels.details
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelDetailsBinding
 import com.odougle.hotels.form.HotelFormFragment
