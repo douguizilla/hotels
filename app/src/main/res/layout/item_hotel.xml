@@ -16,7 +16,7 @@
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tbtRating"
+        android:id="@+id/rbtRating"
         android:isIndicator="true"
         android:layout_gravity="end"
         android:progressTint="@color/purple_500"
