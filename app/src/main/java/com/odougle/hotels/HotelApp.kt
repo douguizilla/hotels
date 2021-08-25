@@ -1,4 +1,4 @@
-package com.odougle.hotels.common
+package com.odougle.hotels
 
 import android.app.Application
 import com.odougle.hotels.repository.di.androidModule
