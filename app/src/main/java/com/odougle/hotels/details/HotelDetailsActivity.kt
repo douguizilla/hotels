@@ -34,6 +34,11 @@ class HotelDetailsActivity : AppCompatActivity(), HotelFormFragment.OnHotelSaved
             .commit()
     }
 
+    override fun onHotelSaved(hotel: Hotel) {
+        setResult(RESULT_OK)
+        showHotelDetaisFragment()
+    }
+
     companion object{
         private const val EXTRA_HOTEL_ID = "hotel_id"
         fun open(activity: Activity, hotelId: Long){
@@ -43,10 +48,5 @@ class HotelDetailsActivity : AppCompatActivity(), HotelFormFragment.OnHotelSaved
                 }
             ,0)
         }
-    }
-
-    override fun onHotelSaved(hotel: Hotel) {
-        setResult(RESULT_OK)
-        showHotelDetaisFragment()
     }
 }
