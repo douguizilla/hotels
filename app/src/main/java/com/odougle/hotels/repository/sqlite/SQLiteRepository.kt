@@ -3,6 +3,7 @@ package com.odougle.hotels.repository.sqlite
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.content.Context
+import android.database.Cursor
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.repository.HotelRepository
 
@@ -62,11 +63,39 @@ class SQLiteRepository(context: Context) : HotelRepository {
     }
 
     override fun hotelById(id: Long, callback: (Hotel?) -> Unit) {
-        TODO("Not yet implemented")
+        val sql = "SELECT * FROM $TABLE_HOTEL WHERE $COLUMN_ID = ?"
+        val db = helper.readableDatabase
+        val cursor = db.rawQuery(sql, arrayOf(id.toString()))
+        val hotel = if(cursor.moveToNext()) hotelFromCursor(cursor) else null
+        callback(hotel)
     }
 
     override fun search(term: String, callback: (List<Hotel>) -> Unit) {
-        TODO("Not yet implemented")
+        var sql = "SELECT * FROM $TABLE_HOTEL"
+        var args: Array<String>? = null
+        if(term.isNotEmpty()){
+            sql += " WHERE $COLUMN_NAME LIKE ?"
+            args = arrayOf("%$term%")
+        }
+        sql += " ORDER BY $COLUMN_NAME"
+        val db = helper.readableDatabase
+        val cursor = db.rawQuery(sql, args)
+        val hotels = ArrayList<Hotel>()
+        while (cursor.moveToNext()){
+            val hotel = hotelFromCursor(cursor)
+            hotels.add(hotel)
+        }
+        cursor.close()
+        db.close()
+        callback(hotels)
+    }
+
+    private fun hotelFromCursor(cursor: Cursor): Hotel {
+        val id = cursor.getLong(cursor.getColumnIndex(COLUMN_ID))
+        val name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME))
+        val address = cursor.getString(cursor.getColumnIndex(COLUMN_ADDRESS))
+        val rating = cursor.getFloat(cursor.getColumnIndex(COLUMN_RATING))
+        return Hotel(id,name,address,rating)
     }
 
 
