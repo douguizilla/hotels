@@ -45,7 +45,7 @@
             android:textColor="@color/purple_500" />
 
         <RatingBar
-            android:id="@+id/rtbRating"
+            android:id="@+id/rtbRatingForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"

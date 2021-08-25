@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter
 import android.widget.RatingBar
 import android.widget.TextView
 import com.odougle.hotels.R
-import com.odougle.hotels.databinding.ItemHotelBinding
 import com.odougle.hotels.model.Hotel
 
 class HotelAdapter(context: Context, hotels: List<Hotel>) :
@@ -19,7 +18,7 @@ class HotelAdapter(context: Context, hotels: List<Hotel>) :
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val hotel = getItem(position)
         val viewHolder = if(convertView == null){
-            val view = LayoutInflater.from(parent?.context).inflate(R.layout.item_hotel, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_hotel, parent, false)
             val holder = ViewHolder(view)
             view.tag = holder
             holder
@@ -33,6 +32,6 @@ class HotelAdapter(context: Context, hotels: List<Hotel>) :
 
     class ViewHolder(val view: View){
         val txtName: TextView = view.findViewById(R.id.txtName)
-        val rtbRating: RatingBar = view.findViewById(R.id.rtbRating)
+        val rtbRating: RatingBar = view.findViewById(R.id.rbtRating)
     }
 }

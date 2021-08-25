@@ -69,7 +69,7 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
         hotel.id = hotelId
         hotel.name = binding.edtName.text.toString()
         hotel.address = binding.edtAddress.text.toString()
-        hotel.rating = binding.rtbRating.rating
+        hotel.rating = binding.rtbRatingForm.rating
         if(presenter.saveHotel(hotel)){
             return hotel
         }
@@ -79,7 +79,7 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
     override fun showHotel(hotel: Hotel) {
         binding.edtName.setText(hotel.name)
         binding.edtAddress.setText(hotel.address)
-        binding.rtbRating.rating = hotel.rating
+        binding.rtbRatingForm.rating = hotel.rating
     }
 
     override fun errorInvalidHotel() {

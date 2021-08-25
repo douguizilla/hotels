@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/txtName"
+        android:id="@+id/txtNameDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
@@ -26,12 +26,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/rtbRating"
+        app:layout_constraintBottom_toTopOf="@+id/rtbRatingDetails"
         tools:text="Endereço do Hotel"
         />
 
     <RatingBar
-        android:id="@+id/rtbRating"
+        android:id="@+id/rtbRatingDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:progressTint="@color/purple_500"

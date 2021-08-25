@@ -12,6 +12,7 @@ import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.ListFragment
 import com.google.android.material.snackbar.Snackbar
 import com.odougle.hotels.R
+import com.odougle.hotels.list.adapter.HotelAdapter
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.repository.memory.MemoryRepository
 import org.koin.android.ext.android.inject
@@ -33,7 +34,7 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     }
 
     override fun showHotels(hotels: List<Hotel>) {
-        val adapter = ArrayAdapter<Hotel>(requireContext(), android.R.layout.simple_list_item_activated_1, hotels)
+        val adapter = HotelAdapter(requireContext(), hotels)
         listAdapter = adapter
     }
 

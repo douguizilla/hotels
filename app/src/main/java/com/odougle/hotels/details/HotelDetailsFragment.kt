@@ -67,15 +67,15 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
 
     override fun showHotelDetails(hotel: Hotel) {
         this.hotel = hotel
-        binding.txtName.text = hotel.name
+        binding.txtNameDetails.text = hotel.name
         binding.txtAddress.text = hotel.address
-        binding.rtbRating.rating = hotel.rating
+        binding.rtbRatingDetails.rating = hotel.rating
     }
 
     override fun errorHotelNotFound() {
-        binding.txtName.text = getString(R.string.error_hotel_not_found)
+        binding.txtNameDetails.text = getString(R.string.error_hotel_not_found)
         binding.txtAddress.visibility = View.GONE
-        binding.rtbRating.visibility = View.GONE
+        binding.rtbRatingDetails.visibility = View.GONE
     }
 
     companion object {
