@@ -1,5 +1,7 @@
 package com.odougle.hotels.repository.di
 
+import com.odougle.hotels.details.HotelDetailsPresenter
+import com.odougle.hotels.details.HotelDetailsView
 import com.odougle.hotels.form.HotelFormPresenter
 import com.odougle.hotels.form.HotelFormView
 import com.odougle.hotels.list.HotelListPresenter
@@ -20,6 +22,14 @@ val androidModule = module {
             repository = get()
         )
     }
+
+    factory { (view: HotelDetailsView) ->
+        HotelDetailsPresenter(
+            view,
+            repository = get()
+        )
+    }
+
 
     factory { (view: HotelFormView) ->
         HotelFormPresenter(
