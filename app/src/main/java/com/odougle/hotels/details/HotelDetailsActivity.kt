@@ -1,4 +1,4 @@
-package com.odougle.hotels.view.activities
+package com.odougle.hotels.details
 
 import android.content.Context
 import android.content.Intent
@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelDetailsBinding
-import com.odougle.hotels.view.fragments.HotelDetailsFragment
-import java.util.*
 
 class HotelDetailsActivity : AppCompatActivity() {
 

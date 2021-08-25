@@ -1,4 +1,7 @@
-package com.odougle.hotels.model
+package com.odougle.hotels.repository.memory
+
+import com.odougle.hotels.model.Hotel
+import com.odougle.hotels.repository.HotelRepository
 
 object MemoryRepository : HotelRepository {
 

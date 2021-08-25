@@ -1,4 +1,4 @@
-package com.odougle.hotels.view.fragments
+package com.odougle.hotels.details
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,7 @@ import androidx.fragment.app.Fragment
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.FragmentHotelDetailsBinding
 import com.odougle.hotels.model.Hotel
-import com.odougle.hotels.model.MemoryRepository
-import com.odougle.hotels.presenter.HotelDetailsPresenter
-import com.odougle.hotels.view.HotelDetailsView
+import com.odougle.hotels.repository.memory.MemoryRepository
 
 class HotelDetailsFragment : Fragment(), HotelDetailsView {
 

@@ -1,4 +1,4 @@
-package com.odougle.hotels.view.fragments
+package com.odougle.hotels.common
 
 import android.app.Dialog
 import android.content.DialogInterface

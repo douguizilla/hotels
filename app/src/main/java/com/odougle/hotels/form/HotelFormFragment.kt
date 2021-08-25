@@ -1,4 +1,4 @@
-package com.odougle.hotels.view.fragments
+package com.odougle.hotels.form
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,9 +12,7 @@ import androidx.fragment.app.FragmentManager
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.FragmentHotelFormBinding
 import com.odougle.hotels.model.Hotel
-import com.odougle.hotels.model.MemoryRepository
-import com.odougle.hotels.presenter.HotelFormPresenter
-import com.odougle.hotels.view.HotelFormView
+import com.odougle.hotels.repository.memory.MemoryRepository
 
 class HotelFormFragment : DialogFragment(), HotelFormView {
 

@@ -1,6 +1,6 @@
-package com.odougle.hotels.model
+package com.odougle.hotels.repository
 
-import android.media.browse.MediaBrowser
+import com.odougle.hotels.model.Hotel
 
 interface HotelRepository {
     fun save(hotel: Hotel)

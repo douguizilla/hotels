@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hotels">
-        <activity android:name=".view.activities.HotelDetailsActivity"
-            android:parentActivityName=".view.activities.HotelActivity"/>
-        <activity android:name=".view.activities.HotelActivity"
+        <activity android:name=".details.HotelDetailsActivity"
+            android:parentActivityName=".common.HotelActivity"/>
+        <activity android:name=".common.HotelActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,9 +1,7 @@
-package com.odougle.hotels.presenter
+package com.odougle.hotels.form
 
 import com.odougle.hotels.model.Hotel
-import com.odougle.hotels.model.HotelRepository
-import com.odougle.hotels.model.HotelValidator
-import com.odougle.hotels.view.HotelFormView
+import com.odougle.hotels.repository.HotelRepository
 import kotlin.Exception
 
 class HotelFormPresenter(

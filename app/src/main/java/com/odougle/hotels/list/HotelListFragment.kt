@@ -1,4 +1,4 @@
-package com.odougle.hotels.view.fragments
+package com.odougle.hotels.list
 
 import android.os.Bundle
 import android.view.Menu
@@ -13,9 +13,7 @@ import androidx.fragment.app.ListFragment
 import com.google.android.material.snackbar.Snackbar
 import com.odougle.hotels.R
 import com.odougle.hotels.model.Hotel
-import com.odougle.hotels.model.MemoryRepository
-import com.odougle.hotels.presenter.HotelListPresenter
-import com.odougle.hotels.view.HotelListView
+import com.odougle.hotels.repository.memory.MemoryRepository
 
 class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
     AdapterView.OnItemLongClickListener {

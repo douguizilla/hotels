@@ -1,4 +1,4 @@
-package com.odougle.hotels.view.activities
+package com.odougle.hotels.common
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,11 +8,11 @@ import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelBinding
+import com.odougle.hotels.details.HotelDetailsActivity
 import com.odougle.hotels.model.Hotel
-import com.odougle.hotels.view.fragments.AboutDialogFragment
-import com.odougle.hotels.view.fragments.HotelDetailsFragment
-import com.odougle.hotels.view.fragments.HotelFormFragment
-import com.odougle.hotels.view.fragments.HotelListFragment
+import com.odougle.hotels.details.HotelDetailsFragment
+import com.odougle.hotels.form.HotelFormFragment
+import com.odougle.hotels.list.HotelListFragment
 
 class HotelActivity : AppCompatActivity(), HotelListFragment.OnHotelClickListener,
     HotelListFragment.OnHotelDeletedListener,

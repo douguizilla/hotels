@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        android:name="com.odougle.hotels.view.fragments.HotelListFragment"/>
+        android:name="com.odougle.hotels.list.HotelListFragment"/>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/details"

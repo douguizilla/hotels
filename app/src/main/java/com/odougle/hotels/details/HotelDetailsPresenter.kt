@@ -1,7 +1,6 @@
-package com.odougle.hotels.presenter
+package com.odougle.hotels.details
 
-import com.odougle.hotels.model.HotelRepository
-import com.odougle.hotels.view.HotelDetailsView
+import com.odougle.hotels.repository.HotelRepository
 
 class HotelDetailsPresenter (
     private val view: HotelDetailsView,

@@ -1,4 +1,6 @@
-package com.odougle.hotels.model
+package com.odougle.hotels.form
+
+import com.odougle.hotels.model.Hotel
 
 class HotelValidator {
     fun validate(info: Hotel) = with(info){

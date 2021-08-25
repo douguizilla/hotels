@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activities.HotelActivity">
+    tools:context=".common.HotelActivity">
 
     <fragment
         android:id="@+id/fragmentList"
-        android:name="com.odougle.hotels.view.fragments.HotelListFragment"
+        android:name="com.odougle.hotels.list.HotelListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -1,4 +1,4 @@
-package com.odougle.hotels.view
+package com.odougle.hotels.details
 
 import com.odougle.hotels.model.Hotel
 
