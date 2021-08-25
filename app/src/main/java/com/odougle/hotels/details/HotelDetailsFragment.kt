@@ -8,6 +8,7 @@ import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.FragmentHotelDetailsBinding
+import com.odougle.hotels.form.HotelFormFragment
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.repository.memory.MemoryRepository
 import org.koin.android.ext.android.inject
@@ -53,6 +54,15 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.loadHotelDetails(arguments?.getLong(EXTRA_HOTEL_ID, -1) ?: -1)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item?.itemId == R.id.action_edit){
+            HotelFormFragment
+                .newInstance(hotel?.id ?: 0)
+                .open(requireFragmentManager())
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun showHotelDetails(hotel: Hotel) {
