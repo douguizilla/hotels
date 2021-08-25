@@ -9,8 +9,8 @@ class HotelSqlHelper(context: Context)
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(
-            "CREATE TABLE_$TABLE_HOTEL(" +
-                    "$COLUMN_ID INTERGER PRIMARY KEY AUTOINCREMENT, " +
+            "CREATE TABLE $TABLE_HOTEL(" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "$COLUMN_NAME TEXT NOT NULL, " +
                     "$COLUMN_ADDRESS TEXT, " +
                     "$COLUMN_RATING REAL)")
