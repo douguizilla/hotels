@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.ActivityHotelDetailsBinding
+import com.odougle.hotels.form.HotelFormFragment
+import com.odougle.hotels.model.Hotel
 
-class HotelDetailsActivity : AppCompatActivity() {
+class HotelDetailsActivity : AppCompatActivity(), HotelFormFragment.OnHotelSavedListener {
 
     private val binding: ActivityHotelDetailsBinding  by lazy{
         ActivityHotelDetailsBinding.inflate(layoutInflater)
@@ -38,5 +40,10 @@ class HotelDetailsActivity : AppCompatActivity() {
                 putExtra(EXTRA_HOTEL_ID, hotelId)
             })
         }
+    }
+
+    override fun onHotelSaved(hotel: Hotel) {
+        setResult(RESULT_OK)
+        showHotelDetaisFragment()
     }
 }
