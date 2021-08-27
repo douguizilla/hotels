@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.content.Context
 import android.database.Cursor
+import com.odougle.hotels.common.*
 import com.odougle.hotels.model.Hotel
 import com.odougle.hotels.repository.HotelRepository
 

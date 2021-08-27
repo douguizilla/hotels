@@ -1,4 +1,4 @@
-package com.odougle.hotels.repository.sqlite
+package com.odougle.hotels.common
 
 const val DATABASE_NAME = "dbHotel"
 const val DATABASE_VERSION = 1
