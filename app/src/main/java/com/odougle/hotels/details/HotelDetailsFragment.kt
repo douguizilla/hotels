@@ -18,7 +18,7 @@ class HotelDetailsFragment : Fragment(){
     private var _binding: FragmentHotelDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HotelDetailsViewModel by viewModel<HotelDetailsViewModel>()
+    private val viewModel: HotelDetailsViewModel by viewModel()
     private var hotel: Hotel? = null
 
     private var shareActionProvider : ShareActionProvider? = null
