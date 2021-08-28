@@ -9,7 +9,7 @@ import com.odougle.hotels.databinding.ActivityHotelDetailsBinding
 import com.odougle.hotels.form.HotelFormFragment
 import com.odougle.hotels.model.Hotel
 
-class HotelDetailsActivity : AppCompatActivity(), HotelFormFragment.OnHotelSavedListener {
+class HotelDetailsActivity : AppCompatActivity(){
 
     private val binding: ActivityHotelDetailsBinding  by lazy{
         ActivityHotelDetailsBinding.inflate(layoutInflater)
@@ -31,11 +31,6 @@ class HotelDetailsActivity : AppCompatActivity(), HotelFormFragment.OnHotelSaved
             .beginTransaction()
             .replace(R.id.details, fragment, HotelDetailsFragment.TAG_DETAILS)
             .commit()
-    }
-
-    override fun onHotelSaved(hotel: Hotel) {
-        setResult(RESULT_OK)
-        showHotelDetaisFragment()
     }
 
     companion object{
