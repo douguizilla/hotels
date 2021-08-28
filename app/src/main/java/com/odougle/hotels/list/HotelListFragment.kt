@@ -5,32 +5,68 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.ListFragment
+import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.odougle.hotels.R
 import com.odougle.hotels.list.adapter.HotelAdapter
 import com.odougle.hotels.model.Hotel
-import com.odougle.hotels.repository.memory.MemoryRepository
-import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
-import com.odougle.hotels.list.HotelListPresenter as HotelListPresenter
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
+class HotelListFragment : ListFragment(), ActionMode.Callback,
     AdapterView.OnItemLongClickListener {
 
-    private val presenter: HotelListPresenter by inject { parametersOf(this) }
+    private val viewModel: HotelListViewModel by sharedViewModel()
 
     private var actionMode: ActionMode? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        retainInstance = true
-        presenter.init()
         listView.onItemLongClickListener = this
+        viewModel.showDetailsCommand().observe(viewLifecycleOwner, Observer { hotel ->
+            if(hotel != null){
+                showHotelDetails(hotel)
+            }
+        })
+
+        viewModel.isInDeleteMode().observe(viewLifecycleOwner, Observer { deleteMode ->
+            if(deleteMode == true){
+                showDeleteMode()
+            }else{
+                hideDeleteMode()
+            }
+        })
+
+        viewModel.selectedHotels().observe(viewLifecycleOwner, Observer { hotels ->
+            if(hotels != null){
+                showSelectedHotels(hotels)
+            }
+        })
+
+        viewModel.selectionCount().observe(viewLifecycleOwner, Observer { count ->
+            if(count != null){
+                updateSelectionCountText(count)
+            }
+        })
+
+        viewModel.showDeleteMessage().observe(viewLifecycleOwner, Observer { count ->
+            if(count != null && count > 0){
+                showMessageHotelsDeleted(count)
+            }
+        })
+
+        viewModel.getHotels()?.observe(viewLifecycleOwner, Observer { hotels ->
+            if(hotels != null){
+                showHotels(hotels)
+            }
+        })
+
+        if(viewModel.getHotels()?.value == null){
+            search()
+        }
     }
 
     override fun showHotels(hotels: List<Hotel>) {
@@ -143,8 +179,8 @@ class HotelListFragment : ListFragment(), HotelListView, ActionMode.Callback,
         fun onHotelsDeleted(hotels: List<Hotel>)
     }
 
-    fun search(text: String){
-        presenter.searchHotels(text)
+    fun search(text: String = ""){
+        viewModel.search(text)
     }
 
     fun clearSearch(){
