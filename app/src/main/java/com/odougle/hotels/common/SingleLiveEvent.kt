@@ -26,7 +26,6 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
 
     @MainThread
     fun call(){
-        var value = value
-        value = null
+        super.setValue(null)
     }
 }
