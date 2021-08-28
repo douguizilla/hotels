@@ -6,20 +6,19 @@ import android.view.*
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.odougle.hotels.R
 import com.odougle.hotels.databinding.FragmentHotelDetailsBinding
 import com.odougle.hotels.form.HotelFormFragment
 import com.odougle.hotels.model.Hotel
-import com.odougle.hotels.repository.memory.MemoryRepository
-import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HotelDetailsFragment : Fragment(), HotelDetailsView {
+class HotelDetailsFragment : Fragment(){
 
     private var _binding: FragmentHotelDetailsBinding? = null
     private val binding get() = _binding!!
 
-    private val presenter: HotelDetailsPresenter by inject { parametersOf(this) }
+    private val viewModel: HotelDetailsViewModel by viewModel<HotelDetailsViewModel>()
     private var hotel: Hotel? = null
 
     private var shareActionProvider : ShareActionProvider? = null
@@ -53,7 +52,18 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.loadHotelDetails(arguments?.getLong(EXTRA_HOTEL_ID, -1) ?: -1)
+        val id = arguments?.getLong(EXTRA_HOTEL_ID, -1) ?: -1
+        viewModel.loadHotelDetails(id).observe(viewLifecycleOwner, Observer { hotel ->
+            if (hotel != null){
+                showHotelDetails(hotel)
+            }else{
+                activity?.supportFragmentManager
+                    ?.beginTransaction()
+                    ?.remove(this)
+                    ?.commit()
+                errorHotelNotFound()
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -65,14 +75,14 @@ class HotelDetailsFragment : Fragment(), HotelDetailsView {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun showHotelDetails(hotel: Hotel) {
+    private fun showHotelDetails(hotel: Hotel) {
         this.hotel = hotel
         binding.txtNameDetails.text = hotel.name
         binding.txtAddress.text = hotel.address
         binding.rtbRatingDetails.rating = hotel.rating
     }
 
-    override fun errorHotelNotFound() {
+    private fun errorHotelNotFound() {
         binding.txtNameDetails.text = getString(R.string.error_hotel_not_found)
         binding.txtAddress.visibility = View.GONE
         binding.rtbRatingDetails.visibility = View.GONE
