@@ -171,6 +171,7 @@ class HotelListFragment : ListFragment(), ActionMode.Callback,
         fun onHotelClick(hotel: Hotel)
     }
 
+
     fun search(text: String = ""){
         viewModel.search(text)
     }
