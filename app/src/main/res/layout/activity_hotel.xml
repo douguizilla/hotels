@@ -23,6 +23,7 @@
         app:srcCompat="@drawable/ic_add"
         app:fabSize="normal"
         app:borderWidth="0dp"
-        android:layout_gravity="bottom|end"/>
+        android:layout_gravity="bottom|end"
+        android:contentDescription="TODO" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
