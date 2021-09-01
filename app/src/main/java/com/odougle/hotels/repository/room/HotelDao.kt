@@ -20,9 +20,11 @@ interface HotelDao {
     @Delete
     fun delete(vararg hotels: Hotel): Int
 
-    @Query("SELECT * FROM $TABLE_HOTEL WHERE $COLUMN_ID = :id")
+    @Query("""SELECT * FROM $TABLE_HOTEL WHERE $COLUMN_ID = :id""")
     fun hotelById(id: Long): LiveData<Hotel>
 
-    @Query("SELECT * FROM $TABLE_HOTEL WHERE $COLUMN_NAME LIKE :query ORDER BY $COLUMN_NAME")
+    @Query(
+        """SELECT * FROM $TABLE_HOTEL 
+        WHERE $COLUMN_NAME LIKE :query ORDER BY $COLUMN_NAME""")
     fun search(query: String): LiveData<List<Hotel>>
 }
